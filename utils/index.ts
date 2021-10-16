@@ -1,4 +1,4 @@
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 
 export function dateFormat(date: string) {
   return dayjs(date).format('DD MMMM YYYY');

@@ -3,7 +3,8 @@
   "compilerOptions": {
     "types": [
       "nuxt-windicss"
-    ]
+    ],
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
   },
-  "moduleResolution": "node"
 }
