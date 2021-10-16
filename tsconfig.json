@@ -1,8 +1,9 @@
 {
-  "extends": "./.nuxt/tsconfig.json",
+  // "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "types": [
       "nuxt-windicss"
     ]
-  }
+  },
+  "moduleResolution": "node"
 }

@@ -1,5 +1,9 @@
 <template>
   <div>
+    <Head lang="'en-US'">
+      <Title>To Do List App</Title>
+      <Meta name="description" content="To Do List App" />
+    </Head>
     <div class="bg-primary p-4 py-6 flex align-items">
       <div class="container mx-auto">
         <h2 class="text-2xl font-bold text-white">To Do List App</h2>

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { dateFormat } from '@/utils/global';
+import { dateFormat } from '@/utils';
 export default {
   props: {
     data: {
@@ -27,7 +27,9 @@ export default {
       return (data && data.value) || {};
     });
 
-    const formatDate = (date) => dateFormat(date);
+    const formatDate = (date) => {
+      return dateFormat(date);
+    }
 
     return {
       activity,

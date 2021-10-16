@@ -51,8 +51,12 @@ export default {
     });
 
     const fetchData = async () => {
-      const data = await showActivityGroup(route.params.id);
-      content.value = data;
+      try {
+        const data = await showActivityGroup(route.params.id);
+        content.value = data;
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     const edit = () => {

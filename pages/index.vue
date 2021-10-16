@@ -38,8 +38,12 @@ export default {
     });
 
     const fetchData = async () => {
-      const { data } = await getActivityGroupLists();
-      groups.value = data;
+      try {
+        const { data } = await getActivityGroupLists();
+        groups.value = data;
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     const addData = async () => {
