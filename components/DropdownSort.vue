@@ -5,35 +5,35 @@
     </div>
     <div class="bg-white rounded shadow-md absolute top-15" v-show="isDialogOpen">
       <ul>
-        <li class="list border-t">
+        <li class="list border-t" @click="selectSort('terbaru')">
           <div class="flex items-center space-x-4">
             <IconsSortAscending class="text-primary" />
             <span>Terbaru</span>
           </div>
           <span v-if="sortBy === 'terbaru'">&#10003;</span>
         </li>
-        <li class="list">
+        <li class="list" @click="selectSort('terlama')">
           <div class="flex items-center space-x-4">
             <IconsSortDescending class="text-primary" />
             <span>Terlama</span>
           </div>
           <span v-if="sortBy === 'terlama'">&#10003;</span>
         </li>
-        <li class="list">
+        <li class="list" @click="selectSort('a-z')">
           <div class="flex items-center space-x-4">
             <IconsSortAscending class="text-primary" />
             <span>A - Z</span>
           </div>
           <span v-if="sortBy === 'a-z'">&#10003;</span>
         </li>
-        <li class="list">
+        <li class="list" @click="selectSort('z-a')">
           <div class="flex items-center space-x-4">
             <IconsSortDescending class="text-primary" />
             <span>Z - A</span>
           </div>
           <span v-if="sortBy === 'z-a'">&#10003;</span>
         </li>
-        <li class="list">
+        <li class="list" @click="selectSort('unfinish')">
           <div class="flex items-center space-x-4">
             <IconsSwitchVertical class="text-primary" />
             <span>Belum Selesai</span>
@@ -47,10 +47,19 @@
 
 <script>
 export default {
-  setup() {
+  emits: ['sort'],
+  setup(_, { emit }) {
     const sortBy = ref('terbaru');
     const isDialogOpen = ref(false);
+
+    const selectSort = (value) => {
+      emit('sort', value);
+      sortBy.value = value;
+      isDialogOpen.value = false;
+    }
+
     return {
+      selectSort,
       sortBy,
       isDialogOpen,
     }

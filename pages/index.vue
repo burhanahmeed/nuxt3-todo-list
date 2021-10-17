@@ -10,7 +10,7 @@
     </div>
     <div class="filled-component" v-if="groups && groups.length">
       <template v-for="gr in groups" :key="gr.id">
-        <ActivityGroupCard :data="gr" class="m-2 inline-block" />
+        <ActivityGroupCard :data="gr" class="m-2 inline-block" @init="fetchData" />
       </template>
     </div>
     <div class="empty-component" v-else>
@@ -54,6 +54,7 @@ export default {
     return {
       groups,
       addData,
+      fetchData
     }
   }
 }
