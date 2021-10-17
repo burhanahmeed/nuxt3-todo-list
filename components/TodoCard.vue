@@ -1,17 +1,19 @@
 <template>
-  <div class="p-6 bg-white shadow-lg rounded-xl text-gray-800">
+  <div class="p-6 bg-white shadow-lg rounded-xl text-gray-800" data-cy="todo-item">
     <div class="flex justify-between">
       <div class="flex items-center space-x-4">
         <input
+          data-cy="todo-item-checkbox"
           type="checkbox"
           :checked="!todo.is_active"
           @click="updateStatus(!todo.is_active)"
         >
-        <div class="h-4 w-4 rounded-full" :class="color"></div>
-        <span :class="`${!todo.is_active && 'line-through'}`">{{ todo.title }}</span>
+        <div class="h-4 w-4 rounded-full" :class="`${color}`" data-cy="todo-item-priority-indicator"></div>
+        <span :class="`${!todo.is_active && 'line-through'}`" data-cy="todo-item-title">{{ todo.title }}</span>
+        <span data-cy="todo-item-edit-button"></span>
       </div>
-      <IconsTrash class="cursor-pointer" @click="openTrashModal"/>
-      <Modal ref="modal" v-slot="{ close }" :customStyle="{ maxWidth: '450px' }">
+      <IconsTrash class="cursor-pointer" @click="openTrashModal" data-cy="todo-item-delete-button" />
+      <Modal ref="modal" v-slot="{ close }" :customStyle="{ maxWidth: '450px' }" data-cy="modal-delete">
         <div class="text-center space-y-4">
           <img class="mx-auto" src="https://ivan-todo-devrank.netlify.app/static/media/icon-alert.8a9d9385.svg" alt="alert" data-cy="modal-delete-icon">
           <div class="">

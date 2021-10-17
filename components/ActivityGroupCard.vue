@@ -1,13 +1,13 @@
 <template>
-    <div class="p-6 bg-white shadow-lg rounded-xl text-gray-800" style="width: 230px; height: 230px;">
+    <div class="p-6 bg-white shadow-lg rounded-xl text-gray-800" style="width: 230px; height: 230px;" data-cy="activity-item">
       <nuxt-link :to="`/detail/${activity.id}`">
-        <div style="height: 170px;" class="cursor-pointer">
+        <div style="height: 170px;" class="cursor-pointer" data-cy="activity-item-title">
           <h3 class="font-bold text-xl">{{ activity.title }}</h3>
         </div>
       </nuxt-link>
       <div class="flex justify-between">
-        <span>{{ formatDate(activity.created_at) }}</span>
-        <IconsTrash class="cursor-pointer" @click="openTrashModal" />
+        <span data-cy="activity-item-date">{{ formatDate(activity.created_at) }}</span>
+        <IconsTrash data-cy="activity-item-delete-button" class="cursor-pointer" @click="openTrashModal" />
         <Modal ref="modal" v-slot="{ close }" :customStyle="{ maxWidth: '450px' }">
           <div class="text-center space-y-4">
             <img class="mx-auto" src="https://ivan-todo-devrank.netlify.app/static/media/icon-alert.8a9d9385.svg" alt="alert" data-cy="modal-delete-icon">

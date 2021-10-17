@@ -2,9 +2,9 @@
   <div class="container px-6 mx-auto">
     <div class="flex justify-between py-8">
       <div>
-        <h1 class="text-4xl font-bold">Activity</h1>
+        <h1 class="text-4xl font-bold" data-cy="activity-title">Activity</h1>
       </div>
-      <div>
+      <div data-cy="activity-add-button">
         <Button text="+ Tambah" @click="addData" />
       </div>
     </div>
@@ -13,7 +13,7 @@
         <ActivityGroupCard :data="gr" class="m-2 inline-block" @init="fetchData" />
       </template>
     </div>
-    <div class="empty-component" v-else>
+    <div class="empty-component" v-else data-cy="activity-empty-state">
       <div class="">
         <img
           class="mx-auto block"
