@@ -13,14 +13,14 @@
         <span data-cy="todo-item-edit-button"></span>
       </div>
       <IconsTrash class="cursor-pointer" @click="openTrashModal" data-cy="todo-item-delete-button" />
-      <Modal ref="modal" v-slot="{ close }" :customStyle="{ maxWidth: '450px' }" data-cy="modal-delete">
-        <div class="text-center space-y-4">
+      <Modal ref="modal" v-slot="{ close }" :customStyle="{ maxWidth: '450px' }">
+        <div class="text-center space-y-4" data-cy="modal-delete">
           <img class="mx-auto" src="https://ivan-todo-devrank.netlify.app/static/media/icon-alert.8a9d9385.svg" alt="alert" data-cy="modal-delete-icon">
           <div class="">
             Apakah Anda yakin menghapus item <strong>"{{ todo.title }}"</strong>?
           </div>
           <div class="mx-auto w-full space-x-2">
-            <button class="p-2 px-8 bg-gray-200 rounded-4xl text-black text-lg" @click="close">
+            <button class="p-2 px-8 bg-gray-200 rounded-4xl text-black text-lg" @click="() => {close(); isModalOpen = false;}">
               Batal
             </button>
             <button class="p-2 px-8 bg-red-500 rounded-4xl text-white text-lg" @click="() => {deleteOne(); close();}">
@@ -47,6 +47,16 @@ export default {
   setup(props, { emit }) {
     const { data } = toRefs(props)
     const modal = ref(null)
+    const isModalOpen = ref(false)
+
+    // onMounted(() => {
+    //   document.addEventListener("click", (e) => {
+    //     if (!box.contains(e.target) && isModalOpen.value) {
+    //       isModalOpen.value = false;
+    //       modal.value.close();
+    //     }
+    //   });
+    // })
 
     const todo = computed(() => {
       return data && data.value || {};
@@ -72,10 +82,12 @@ export default {
 
     const openTrashModal = () => {
       modal.value.open();
+      isModalOpen.value = true;
     }
 
     const deleteOne = async () => {
       await deleteTodo(todo.value.id);
+      isModalOpen.value = false;
       emit('init');
     }
 
