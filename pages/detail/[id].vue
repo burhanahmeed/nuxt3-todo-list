@@ -38,7 +38,7 @@
               </div>
             </div>
             <div class="mx-auto w-full space-x-2 text-right border-t p-2 py-4">
-              <button data-cy="modal-add-save-button" class="p-2 px-8 bg-blue-500 rounded-4xl text-white text-lg" @click="() => {addOne(); close();}">
+              <button :disabled="!form.title" data-cy="modal-add-save-button" class="p-2 px-8 bg-blue-500 rounded-4xl text-white text-lg" @click="() => {addOne(); close();}">
                 Simpan
               </button>
             </div>
